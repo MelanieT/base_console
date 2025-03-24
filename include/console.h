@@ -1,3 +1,6 @@
+#ifndef CONSOLE_H_INCLUDED
+#define CONSOLE_H_INCLUDED
+
 struct console_handlers
 {
     void (*send)(const char *data);
@@ -16,6 +19,8 @@ void console_disconnect(void);
 
 #define console_printf(fmt, ...) do { \
     char data[1024]; \
-    os_sprintf(data, fmt, ##__VA_ARGS__); \
+    sprintf(data, fmt, ##__VA_ARGS__); \
     console_send(data); \
     } while(0)
+
+#endif
